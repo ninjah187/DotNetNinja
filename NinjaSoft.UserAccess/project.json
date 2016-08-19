@@ -1,0 +1,24 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.0.0",
+    "Microsoft.AspNetCore.Mvc": "1.0.0",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0"
+        }
+      }
+    }
+  },
+
+  "scripts": {
+    "postcompile": [ "dotnet pack --no-build --version-suffix rc-1 --output C:\\ProgramData\\NuGet.local" ]
+  }
+}
