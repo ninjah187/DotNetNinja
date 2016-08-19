@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http;
 
 namespace NinjaSoft.UserAccess
 {
@@ -29,7 +30,7 @@ namespace NinjaSoft.UserAccess
             services
                 .AddSingleton<IHashManager, THashManager>()
                 .AddScoped<IUserService, TUserService>();
-
+            
             if (typeof(DbContext) != typeof(TDbContextImplementation))
             {
                 services.AddScoped<DbContext, TDbContextImplementation>();

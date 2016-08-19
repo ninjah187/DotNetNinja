@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace NinjaSoft.UserAccess
@@ -13,6 +14,7 @@ namespace NinjaSoft.UserAccess
     {
         DbContext _dbContext;
         IHashManager _hashManager;
+        HttpContext _httpContext;
 
         public UserService(DbContext dbContext, IHashManager hashManager)
         {
