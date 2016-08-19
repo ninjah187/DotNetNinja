@@ -49,7 +49,7 @@ namespace NinjaSoft.UserAccess
                 //HttpOnly = true,
                 //Secure = true
             });
-
+            
             return RedirectToAction("Index", "Home");
         }
     }
