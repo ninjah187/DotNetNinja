@@ -1,10 +1,14 @@
 ﻿{
-  "version": "1.0.0-*",
+  "version": "0.9.0-*",
+  "title": "Ninja Software User Access library",
+  "description": "Library providing basic user access functionality for ASP.NET Core project using Entity Framework Core.",
+  "copyright": "Karol Hinz",
+  "authors": [ "Karol Hinz" ],
 
   "dependencies": {
     "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.0",
-    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0"
+    "Microsoft.EntityFrameworkCore": "1.0.0"
   },
 
   "frameworks": {
@@ -19,6 +23,6 @@
   },
 
   "scripts": {
-    "postcompile": [ "dotnet pack --no-build --version-suffix rc-1 --output C:\\ProgramData\\NuGet.local" ]
+    "postcompile": [ "dotnet pack --no-build --output C:\\ProgramData\\NuGet.local" ]
   }
 }
