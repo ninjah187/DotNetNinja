@@ -82,7 +82,7 @@ namespace NinjaSoft.UserAccess
         public async Task<Guid?> LogInAsync(string login, string password)
         {
             var user = await GetUserAsync(login);
-
+            
             return await LogInAsync(user, password);
         }
 

@@ -2,37 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace NinjaSoft.UserAccess
 {
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Adds singleton IHashManager service and scoped IUserService implementations.
+        /// Adds singleton IHashManager service and scoped IUserService default implementations. Also adds scoped specific DbContext implementation.
         /// </summary>
         /// <returns></returns>
-        public static IServiceCollection AddUserAccessServices(this IServiceCollection services)
-            => services.AddUserAccessServices<HashManager, UserService>();
+        public static IServiceCollection AddUserAccess<TDbContextImplementation>(this IServiceCollection services)
+            where TDbContextImplementation : DbContext
+            => services.AddUserAccess<HashManager, UserService, TDbContextImplementation>();
 
         /// <summary>
-        /// Adds singleton IHashManager service and scoped IUserService implementations.
+        /// Adds singleton IHashManager service, scoped IUserService and scoped specific DbContext implementations.
         /// </summary>
         /// <returns></returns>
-        public static IServiceCollection AddUserAccessServices<THashManager, TUserService>(this IServiceCollection services)
+        public static IServiceCollection AddUserAccess<THashManager, TUserService, TDbContextImplementation>(this IServiceCollection services)
             where THashManager : class, IHashManager
             where TUserService : class, IUserService
+            where TDbContextImplementation : DbContext
         {
             services
                 .AddSingleton<IHashManager, THashManager>()
                 .AddScoped<IUserService, TUserService>();
 
+            if (typeof(DbContext) != typeof(TDbContextImplementation))
+            {
+                services.AddScoped<DbContext, TDbContextImplementation>();
+            }
+            
             return services;
         }
     }

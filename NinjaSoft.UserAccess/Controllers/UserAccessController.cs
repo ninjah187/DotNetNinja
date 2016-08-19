@@ -7,23 +7,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace NinjaSoft.UserAccess
 {
+    /// <summary>
+    /// Controller providing log in and log out functionality.
+    /// </summary>
     [Route("users")]
-    public class UsersController : Controller
+    public class UserAccessController : Controller
     {
         protected IUserService UserService { get; }
 
-        public UsersController(IUserService userService)
+        public UserAccessController(IUserService userService)
         {
             UserService = userService;
         }
 
         [Route("login")]
-        public IActionResult LogIn()
-            => View();
+        public virtual IActionResult LogIn()
+            => View("Views/Users/Login.cshtml");
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> LogIn(string login, string password)
+        public virtual async Task<IActionResult> LogIn(string login, string password)
         {
             var user = await UserService.GetUserAsync(login);
 

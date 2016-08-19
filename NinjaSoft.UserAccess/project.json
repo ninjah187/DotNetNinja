@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.10.0-*",
+  "version": "0.10.7-*",
   "title": "Ninja Software User Access library",
   "description": "Library providing basic user access functionality for ASP.NET Core project using Entity Framework Core.",
   "copyright": "Karol Hinz",
