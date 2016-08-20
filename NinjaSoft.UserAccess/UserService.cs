@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace NinjaSoft.UserAccess
 {
     /// <summary>
-    /// IUserService working with Entity Framework Core.
+    /// Default IUserService using Entity Framework Core and cookies.
     /// </summary>
     public class UserService : IUserService
     {
@@ -16,10 +16,11 @@ namespace NinjaSoft.UserAccess
         IHashManager _hashManager;
         HttpContext _httpContext;
 
-        public UserService(DbContext dbContext, IHashManager hashManager)
+        public UserService(DbContext dbContext, IHashManager hashManager, IHttpContextAccessor httpContextAccessor)
         {
             _dbContext = dbContext;
             _hashManager = hashManager;
+            _httpContext = httpContextAccessor.HttpContext;
         }
 
         public async Task<User> CreateUserAsync(string login, string password)
@@ -48,11 +49,9 @@ namespace NinjaSoft.UserAccess
 
         public async Task<User> GetLoggedUserAsync(string token)
         {
-            var guidToken = new Guid(token);
-
             var user = await _dbContext
                 .Set<User>()
-                .FirstOrDefaultAsync(u => u.AccessToken == guidToken
+                .FirstOrDefaultAsync(u => u.AccessToken == token
                                         && u.AccessTokenExpiration >= DateTime.Now);
 
             return user;
@@ -61,7 +60,13 @@ namespace NinjaSoft.UserAccess
         public async Task<User> GetUserAsync(string login)
             => await _dbContext.Set<User>().FirstOrDefaultAsync(u => u.Login.Equals(login, StringComparison.CurrentCultureIgnoreCase));
 
-        public async Task<Guid?> LogInAsync(User user, string password)
+        /// <summary>
+        /// If password matches user, creates access token in database and cookie.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public async Task<string> LogInAsync(User user, string password)
         {
             if (user == null)
             {
@@ -73,15 +78,23 @@ namespace NinjaSoft.UserAccess
                 return null;
             }
 
-            user.AccessToken = Guid.NewGuid();
+            //user.AccessToken = Guid.NewGuid();
+            user.AccessToken = _hashManager.Hash(Guid.NewGuid().ToString()).Password;
             user.AccessTokenExpiration = DateTime.Now + TimeSpan.FromMinutes(30);
 
             await _dbContext.SaveChangesAsync();
 
+            _httpContext.Response.Cookies.Append("accessToken", user.AccessToken, new CookieOptions
+            {
+                Expires = user.AccessTokenExpiration,
+                HttpOnly = true,
+                //Secure = true
+            });
+
             return user.AccessToken;
         }
 
-        public async Task<Guid?> LogInAsync(string login, string password)
+        public async Task<string> LogInAsync(string login, string password)
         {
             var user = await GetUserAsync(login);
             

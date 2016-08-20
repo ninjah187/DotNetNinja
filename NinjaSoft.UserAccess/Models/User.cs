@@ -16,7 +16,7 @@ namespace NinjaSoft.UserAccess
         public string Password { get; set; }
         public string Salt { get; set; }
 
-        public Guid AccessToken { get; set; }
+        public string AccessToken { get; set; }
         public DateTime AccessTokenExpiration { get; set; }
     }
 }

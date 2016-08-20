@@ -29,7 +29,7 @@ namespace NinjaSoft.UserAccess
         public virtual async Task<IActionResult> LogIn(string login, string password)
         {
             var user = await UserService.GetUserAsync(login);
-
+            
             if (user == null)
             {
                 // later - view about not being logged
@@ -43,14 +43,7 @@ namespace NinjaSoft.UserAccess
                 return Unauthorized();
             }
 
-            HttpContext.Response.Cookies.Append("accessToken", token.ToString(), new CookieOptions
-            {
-                Expires = DateTime.Now + TimeSpan.FromMinutes(30),
-                //HttpOnly = true,
-                //Secure = true
-            });
-            
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Pages");
         }
     }
 }

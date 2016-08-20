@@ -6,18 +6,18 @@ using Microsoft.AspNetCore.Http;
 
 namespace NinjaSoft.UserAccess
 {
-    public class UserAccessMiddleware
-    {
-        readonly RequestDelegate _next;
+    //public class UserAccessMiddleware
+    //{
+    //    readonly RequestDelegate _next;
         
-        public UserAccessMiddleware(RequestDelegate next, UserAccessOptions options)
-        {
-            _next = next;
-        }
+    //    public UserAccessMiddleware(RequestDelegate next, UserAccessOptions options)
+    //    {
+    //        _next = next;
+    //    }
 
-        public async Task Invoke(HttpContext context)
-        {
-            await _next(context);
-        }
-    }
+    //    public async Task Invoke(HttpContext context)
+    //    {
+    //        await _next(context);
+    //    }
+    //}
 }

@@ -30,7 +30,7 @@ namespace NinjaSoft.UserAccess
         /// <param name="login">User login.</param>
         /// <param name="password">User password.</param>
         /// <returns>User access token if succeed, null otherwise.</returns>
-        Task<Guid?> LogInAsync(string login, string password);
+        Task<string> LogInAsync(string login, string password);
 
         /// <summary>
         /// Attempts to log in user with given credentials. If succeed, returns access token, otherwise returns null.
@@ -38,7 +38,7 @@ namespace NinjaSoft.UserAccess
         /// <param name="user">User object.</param>
         /// <param name="password">User password.</param>
         /// <returns>User access token if succeed, null otherwise.</returns>
-        Task<Guid?> LogInAsync(User user, string password);
+        Task<string> LogInAsync(User user, string password);
 
         /// <summary>
         /// Gets user with specified login.
