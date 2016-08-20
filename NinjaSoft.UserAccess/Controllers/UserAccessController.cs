@@ -10,8 +10,7 @@ namespace NinjaSoft.UserAccess
     /// <summary>
     /// Controller providing log in and log out functionality.
     /// </summary>
-    [Route("users")]
-    public class UserAccessController : Controller
+    abstract class UserAccessController : Controller
     {
         protected IUserService UserService { get; }
 
@@ -19,13 +18,11 @@ namespace NinjaSoft.UserAccess
         {
             UserService = userService;
         }
-
-        [Route("login")]
+        
         public virtual IActionResult LogIn()
             => View("Views/Users/Login.cshtml");
 
         [HttpPost]
-        [Route("login")]
         public virtual async Task<IActionResult> LogIn(string login, string password)
         {
             var user = await UserService.GetUserAsync(login);
