@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NinjaSoft.UserAccess
+namespace DotNetNinja.UserAccess
 {
     /// <summary>
     /// Password and salt values pair.

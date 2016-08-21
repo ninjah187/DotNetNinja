@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 
-namespace NinjaSoft.UserAccess
+namespace DotNetNinja.UserAccess
 {
     public class UserAccessAttribute : TypeFilterAttribute
     {

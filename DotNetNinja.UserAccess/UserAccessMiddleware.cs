@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace NinjaSoft.UserAccess
+namespace DotNetNinja.UserAccess
 {
     //public class UserAccessMiddleware
     //{

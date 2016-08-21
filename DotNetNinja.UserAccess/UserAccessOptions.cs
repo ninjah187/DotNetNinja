@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 //using Microsoft.AspNetCore.Authentication.Cookies;
 
-namespace NinjaSoft.UserAccess
+namespace DotNetNinja.UserAccess
 {
     //public class UserAccessOptions
     //{

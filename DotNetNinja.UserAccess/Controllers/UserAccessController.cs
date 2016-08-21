@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace NinjaSoft.UserAccess
+namespace DotNetNinja.UserAccess
 {
     /// <summary>
     /// Controller providing log in and log out functionality.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 
-namespace NinjaSoft.UserAccess
+namespace DotNetNinja.UserAccess
 {
     //public static class UserAccessMiddlewareExtensions
     //{

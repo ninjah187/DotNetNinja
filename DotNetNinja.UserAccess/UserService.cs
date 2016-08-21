@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
-namespace NinjaSoft.UserAccess
+namespace DotNetNinja.UserAccess
 {
     /// <summary>
     /// Default IUserService using Entity Framework Core and cookies.
