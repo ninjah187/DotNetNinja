@@ -61,5 +61,12 @@ namespace DotNetNinja.UserAccess
         /// <param name="password"></param>
         /// <returns></returns>
         bool VerifyPassword(User user, string password);
+
+        /// <summary>
+        /// Creates new token in database and cookie for specified user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        Task CreateNewTokenAsync(User user);
     }
 }

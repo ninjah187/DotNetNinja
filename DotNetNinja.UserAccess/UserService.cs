@@ -78,7 +78,29 @@ namespace DotNetNinja.UserAccess
                 return null;
             }
 
-            //user.AccessToken = Guid.NewGuid();
+            //await CreateNewOrSustainExistingToken(user);
+            await CreateNewTokenAsync(user);
+
+            return user.AccessToken;
+        }
+
+        //public async Task CreateNewOrSustainExistingToken(User user)
+        //{
+        //    if (_httpContext.Request.Cookies.ContainsKey("accessToken"))
+        //    {
+        //        _httpContext.Response.Cookies.Append("dsa,", "dsadw", new CookieOptions
+        //        {
+                    
+        //        });
+        //    }
+        //    else
+        //    {
+                
+        //    }
+        //}
+
+        public async Task CreateNewTokenAsync(User user)
+        {
             user.AccessToken = _hashManager.Hash(Guid.NewGuid().ToString()).Password;
             user.AccessTokenExpiration = DateTime.Now + TimeSpan.FromMinutes(30);
 
@@ -90,8 +112,6 @@ namespace DotNetNinja.UserAccess
                 HttpOnly = true,
                 //Secure = true
             });
-
-            return user.AccessToken;
         }
 
         public async Task<string> LogInAsync(string login, string password)

@@ -19,7 +19,7 @@ namespace DotNetNinja.UserAccess
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
-            if (context.HttpContext.Request.Cookies.ContainsKey("accessToken"))
+            if (!context.HttpContext.Request.Cookies.ContainsKey("accessToken"))
             {
                 context.Result = new UnauthorizedResult();
                 return;
