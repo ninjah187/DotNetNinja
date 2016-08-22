@@ -84,20 +84,15 @@ namespace DotNetNinja.UserAccess
             return user.AccessToken;
         }
 
-        //public async Task CreateNewOrSustainExistingToken(User user)
-        //{
-        //    if (_httpContext.Request.Cookies.ContainsKey("accessToken"))
-        //    {
-        //        _httpContext.Response.Cookies.Append("dsa,", "dsadw", new CookieOptions
-        //        {
-                    
-        //        });
-        //    }
-        //    else
-        //    {
-                
-        //    }
-        //}
+        public async Task LogOutAsync(User user)
+        {
+            if (user == null)
+            {
+                return;
+            }
+
+            await DeleteTokenAsync(user);
+        }
 
         public async Task CreateNewTokenAsync(User user)
         {
@@ -114,11 +109,31 @@ namespace DotNetNinja.UserAccess
             });
         }
 
+        public async Task DeleteTokenAsync(User user)
+        {
+            user.AccessTokenExpiration = DateTime.Now - TimeSpan.FromMinutes(1);
+
+            await _dbContext.SaveChangesAsync();
+
+            if (_httpContext.Request.Cookies.ContainsKey("accessToken"))
+            {
+                _httpContext.Response.Cookies.Delete("accessToken", new CookieOptions
+                {
+                    HttpOnly = true
+                });
+            }
+        }
+
         public async Task<string> LogInAsync(string login, string password)
         {
             var user = await GetUserAsync(login);
             
             return await LogInAsync(user, password);
+        }
+
+        public async Task LogOutAsync(string token)
+        {
+            await LogOutAsync(await GetLoggedUserAsync(token));
         }
 
         public async Task<bool> VerifyAsync(string token)
