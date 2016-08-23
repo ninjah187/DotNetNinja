@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace DotNetNinja.UserAccess
 {
-    public class RedirectUnauthorizedFilter : IAsyncResultFilter
+    class RedirectUnauthorizedFilter : IAsyncResultFilter
     {
         public string RedirectRoute { get; }
 
