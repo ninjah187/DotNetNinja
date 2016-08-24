@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotNetNinja.UserAccess
 {
+    /// <summary>
+    /// Filter that performs user access authorization.
+    /// </summary>
     public class UserAccessFilter : IAsyncAuthorizationFilter
     {
         IUserService _userService;
@@ -26,8 +29,6 @@ namespace DotNetNinja.UserAccess
             }
 
             var token = context.HttpContext.Request.Cookies["accessToken"];
-
-            //var userService = (IUserService) context.HttpContext.RequestServices.GetService(typeof(IUserService));
 
             if (!await _userService.VerifyAsync(token))
             {
