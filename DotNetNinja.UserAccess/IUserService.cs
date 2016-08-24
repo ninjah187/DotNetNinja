@@ -40,9 +40,25 @@ namespace DotNetNinja.UserAccess
         /// <returns>User access token if succeed, null otherwise.</returns>
         Task<string> LogInAsync(User user, string password);
 
+        /// <summary>
+        /// Logs out user authenticating with given token.
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         Task LogOutAsync(string token);
 
+        /// <summary>
+        /// Logs out given user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         Task LogOutAsync(User user);
+
+        /// <summary>
+        /// Logs out currently logged user.
+        /// </summary>
+        /// <returns></returns>
+        Task LogOutAsync();
 
         /// <summary>
         /// Gets user with specified login.
@@ -67,14 +83,14 @@ namespace DotNetNinja.UserAccess
         bool VerifyPassword(User user, string password);
 
         /// <summary>
-        /// Creates new token in database and cookie for specified user.
+        /// Creates new token for specified user.
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
         Task CreateNewTokenAsync(User user);
 
         /// <summary>
-        /// Sets token to expired both in database and cookie.
+        /// Sets token to expired.
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>

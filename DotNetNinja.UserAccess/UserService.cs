@@ -136,6 +136,16 @@ namespace DotNetNinja.UserAccess
             await LogOutAsync(await GetLoggedUserAsync(token));
         }
 
+        public async Task LogOutAsync()
+        {
+            if (!_httpContext.Request.Cookies.ContainsKey("accessToken"))
+            {
+                return;
+            }
+
+            await LogOutAsync(_httpContext.Request.Cookies["accessToken"]);
+        }
+
         public async Task<bool> VerifyAsync(string token)
             => await GetLoggedUserAsync(token) != null;
 

@@ -1,5 +1,5 @@
 {
-  "version": "0.14.3-*",
+  "version": "0.14.4-*",
   "title": "DotNetNinja User Access library",
   "description": "Library providing basic user access functionality for ASP.NET Core project using Entity Framework Core.",
   "copyright": "Karol Hinz",
