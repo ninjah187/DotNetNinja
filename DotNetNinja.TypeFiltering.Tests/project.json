@@ -1,0 +1,28 @@
+﻿{
+  "version": "0.1.0-*",
+  "title": "DotNetNinja.TypeFiltering tests",
+  "description": "Tests for DotNetNinja.TypeFiltering.",
+  "copyright": "Karol Hinz",
+  "authors": [ "Karol Hinz" ],
+
+  "dependencies": {},
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0"
+        }
+      }
+    }
+  },
+
+  "scripts": {
+    "postcompile": [ "dotnet pack --no-build --output C:\\ProgramData\\NuGet.local" ]
+  },
+
+  "buildOptions": {
+    "xmlDoc": true
+  }
+}
