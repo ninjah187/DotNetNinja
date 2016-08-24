@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotNetNinja.UserAccess
 {
+    /// <summary>
+    /// Filter attribute that restricts access to decorated controller/action only for authorized users.
+    /// </summary>
     public class UserAccessAttribute : TypeFilterAttribute
     {
         public UserAccessAttribute()

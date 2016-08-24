@@ -77,8 +77,7 @@ namespace DotNetNinja.UserAccess
             {
                 return null;
             }
-
-            //await CreateNewOrSustainExistingToken(user);
+            
             await CreateNewTokenAsync(user);
 
             return user.AccessToken;
