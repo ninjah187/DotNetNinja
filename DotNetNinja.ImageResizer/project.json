@@ -1,0 +1,26 @@
+﻿{
+  "version": "0.1.0-*",
+  "title": "DotNetNinja Image Resizer library",
+  "description": "Library providing ASP.NET Core middleware based on ImageProcessorCore which enables image resizing on fly.",
+  "copyright": "Karol Hinz",
+  "authors": [ "Karol Hinz" ],
+  "dependencies": {
+    "ImageProcessorCore": "1.0.0"
+  },
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "postcompile": [ "dotnet pack --no-build --output C:\\ProgramData\\NuGet.local" ]
+  },
+  "buildOptions": {
+    "xmlDoc": true
+  }
+}
