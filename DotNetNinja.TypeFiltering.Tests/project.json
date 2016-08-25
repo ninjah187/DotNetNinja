@@ -18,9 +18,7 @@
     }
   },
 
-  "scripts": {
-    "postcompile": [ "dotnet pack --no-build --output C:\\ProgramData\\NuGet.local" ]
-  },
+  "scripts": {},
 
   "buildOptions": {
     "xmlDoc": true
