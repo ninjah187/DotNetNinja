@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace DotNetNinja.PropertyChangedNotify
+namespace DotNetNinja.NotifyPropertyChanged
 {
-    public static class ExpressionExtensions
+    static class ExpressionExtensions
     {
         /// <summary>
         /// Extracts property name from Expression if its body is MemberExpression, otherwise throws ArgumentException.

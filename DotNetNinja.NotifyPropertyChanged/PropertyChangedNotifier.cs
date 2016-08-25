@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DotNetNinja.PropertyChangedNotify
+namespace DotNetNinja.NotifyPropertyChanged
 {
     /// <summary>
     /// Base class for objects that notify properties changes.
