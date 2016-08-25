@@ -1,0 +1,27 @@
+﻿{
+  "version": "0.1.0-*",
+  "title": "DotNetNinja Property Changed Notify library",
+  "description": "Library providing utilities that helps in notifying of object's property changed.",
+  "copyright": "Karol Hinz",
+  "authors": [ "Karol Hinz" ],
+
+  "dependencies": {},
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0"
+        }
+      }
+    }
+  },
+
+  "scripts": {
+    "postcompile": [ "dotnet pack --no-build --output C:\\ProgramData\\NuGet.local" ]
+  },
+  "buildOptions": {
+    "xmlDoc": true
+  }
+}
