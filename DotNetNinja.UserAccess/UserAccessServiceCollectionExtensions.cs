@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace DotNetNinja.UserAccess
 {
-    public static class ServiceCollectionExtensions
+    public static class UserAccessServiceCollectionExtensions
     {
         /// <summary>
         /// Adds singleton IHashManager service and scoped IUserService default implementations. Also adds scoped specific DbContext implementation.
