@@ -9,7 +9,17 @@ namespace DotNetNinja.ImageResizer
     public static class ImageResizerServiceCollectionExtensions
     {
         public static IServiceCollection AddImageResizer(this IServiceCollection services)
-            => services.AddImageResizer<ImagePathGenerator, ImageResizer>();
+        {
+            services
+                .AddSingleton<IImagePathGenerator, ImagePathGenerator>()
+                .AddSingleton<IImageResizer, ImageResizer>(
+                    serviceProvider => (ImageResizer) new ImageResizerBuilder()
+                                                        .AllowAll()
+                                                        .Build()
+                    );
+
+            return services;
+        }
 
         public static IServiceCollection AddImageResizer<TImagePathGenerator, TImageResizer>(this IServiceCollection services)
             where TImagePathGenerator : class, IImagePathGenerator
