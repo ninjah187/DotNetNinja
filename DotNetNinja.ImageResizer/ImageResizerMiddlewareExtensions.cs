@@ -8,8 +8,8 @@ namespace DotNetNinja.ImageResizer
 {
     public static class ImageResizerMiddlewareExtensions
     {
-        public static IApplicationBuilder UseImageResizer(this IApplicationBuilder app, IImageResizer imageResizer, IImagePathGenerator pathGenerator)
-            => app.UseMiddleware<ImageResizerMiddleware>(imageResizer, pathGenerator);
+        //public static IApplicationBuilder UseImageResizer(this IApplicationBuilder app, IImageResizer imageResizer, IImagePathGenerator pathGenerator)
+        //    => app.UseMiddleware<ImageResizerMiddleware>(imageResizer, pathGenerator);
 
         public static IApplicationBuilder UseImageResizer(this IApplicationBuilder app)
         {
