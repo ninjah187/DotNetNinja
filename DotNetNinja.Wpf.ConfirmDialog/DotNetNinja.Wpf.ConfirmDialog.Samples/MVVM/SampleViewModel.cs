@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DotNetNinja.Wpf.Commands;
 
 namespace DotNetNinja.Wpf.ConfirmDialog.Samples
 {
@@ -16,6 +17,8 @@ namespace DotNetNinja.Wpf.ConfirmDialog.Samples
         public SampleViewModel(IConfirmator confirmator)
         {
             _confirmator = confirmator;    
+
+            DoSomethingCommand = 
         }
 
         public async Task DoSomethingAsync()

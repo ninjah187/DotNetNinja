@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DotNetNinja.Wpf.Command.Properties
+namespace DotNetNinja.Wpf.Commands.Properties
 {
     
     

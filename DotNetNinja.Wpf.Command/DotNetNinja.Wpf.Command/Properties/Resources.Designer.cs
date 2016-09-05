@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DotNetNinja.Wpf.Command.Properties {
+namespace DotNetNinja.Wpf.Commands.Properties {
     
     
     /// <summary>
@@ -38,7 +38,7 @@ namespace DotNetNinja.Wpf.Command.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if ((resourceMan == null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DotNetNinja.Wpf.Command.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DotNetNinja.Wpf.Commands.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

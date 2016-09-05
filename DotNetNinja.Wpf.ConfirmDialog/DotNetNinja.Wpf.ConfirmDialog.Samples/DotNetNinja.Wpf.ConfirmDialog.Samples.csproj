@@ -97,6 +97,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DotNetNinja.Wpf.Command\DotNetNinja.Wpf.Command\DotNetNinja.Wpf.Commands.csproj">
+      <Project>{eacf21d2-33d2-4327-9574-946e08150f04}</Project>
+      <Name>DotNetNinja.Wpf.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DotNetNinja.Wpf.ConfirmDialog\DotNetNinja.Wpf.ConfirmDialog.csproj">
       <Project>{3435ee17-cc43-4fa1-9b93-25cd96da2f6f}</Project>
       <Name>DotNetNinja.Wpf.ConfirmDialog</Name>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace DotNetNinja.Wpf.Command
+namespace DotNetNinja.Wpf.Commands
 {
     public class CommandParametrized<TParameter> : ICommand
     {
