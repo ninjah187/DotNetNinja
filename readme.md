@@ -2,12 +2,12 @@
 
 ## Tools and utilities used in my day-to-day work.
 
-These tools are emerging from my love towards simplicity, work automation and clean APIs.
+__These tools are emerging from my love towards simplicity, work automation and clean APIs.__
 
 ---
 
 ### DotNetNinja.NotifyPropertyChanged:
-Library giving access to abstract class PropertyChangedNotifier which implements INotifyPropertyChanged and provides convenient mechanisms for notifying properties change. The mechanisms are type-safe and allow using IntelliSense.
+Library giving access to abstract class ```PropertyChangedNotifier``` which implements ```INotifyPropertyChanged``` and provides convenient mechanisms for notifying properties change. The mechanisms are type-safe and allow using IntelliSense.
 
 No more magic strings causing headache while debugging!
 
