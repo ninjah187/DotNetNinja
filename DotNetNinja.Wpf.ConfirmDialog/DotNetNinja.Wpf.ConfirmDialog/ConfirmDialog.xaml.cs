@@ -21,7 +21,7 @@ namespace DotNetNinja.Wpf.ConfirmDialog
     {
         bool _confirmed;
 
-        ConfirmDialog(string message, string title = null)
+        ConfirmDialog(string message, string title = "")
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace DotNetNinja.Wpf.ConfirmDialog
             Title = title;
         }
 
-        public static Task<bool> ConfirmAsync(string message, string title = null)
+        public static Task<bool> ConfirmAsync(string message, string title = "")
         {
             var tcs = new TaskCompletionSource<bool>();
 
