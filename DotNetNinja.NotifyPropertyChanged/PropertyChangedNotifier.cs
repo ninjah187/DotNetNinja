@@ -11,7 +11,7 @@ namespace DotNetNinja.NotifyPropertyChanged
     /// <summary>
     /// Base class for objects that notify properties changes.
     /// </summary>
-    public class PropertyChangedNotifier : INotifyPropertyChanged
+    public abstract class PropertyChangedNotifier : INotifyPropertyChanged
     {
         /// <summary>
         /// Event indicating that a property is changed on a component.
