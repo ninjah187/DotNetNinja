@@ -53,6 +53,7 @@ public int Property
 	get { return _property; }
 	set { SetProperty(ref _property, value, nameof(Property)); }
 }
+int _property;
 ```
 
 ---
