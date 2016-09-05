@@ -106,7 +106,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DotNetNinja.Wpf.Command\DotNetNinja.Wpf.Command\DotNetNinja.Wpf.Commands.csproj">
+    <ProjectReference Include="..\..\DotNetNinja.Wpf.Commands\DotNetNinja.Wpf.Commands\DotNetNinja.Wpf.Commands.csproj">
       <Project>{eacf21d2-33d2-4327-9574-946e08150f04}</Project>
       <Name>DotNetNinja.Wpf.Commands</Name>
     </ProjectReference>

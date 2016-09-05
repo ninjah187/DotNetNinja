@@ -19,9 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNinja.Wpf.ConfirmDial
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNinja.Wpf.ConfirmDialog.Samples", "DotNetNinja.Wpf.ConfirmDialog\DotNetNinja.Wpf.ConfirmDialog.Samples\DotNetNinja.Wpf.ConfirmDialog.Samples.csproj", "{88CBC856-0A82-4F08-A962-F6D13A85ED36}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNetNinja.Wpf.Command", "DotNetNinja.Wpf.Command", "{6C7847D7-7CC3-483A-8BBD-BD77FEFB9A9E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNetNinja.Wpf.Commands", "DotNetNinja.Wpf.Commands", "{6C7847D7-7CC3-483A-8BBD-BD77FEFB9A9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNinja.Wpf.Commands", "DotNetNinja.Wpf.Command\DotNetNinja.Wpf.Command\DotNetNinja.Wpf.Commands.csproj", "{EACF21D2-33D2-4327-9574-946E08150F04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNinja.Wpf.Commands", "DotNetNinja.Wpf.Commands\DotNetNinja.Wpf.Commands\DotNetNinja.Wpf.Commands.csproj", "{EACF21D2-33D2-4327-9574-946E08150F04}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.NotifyPropertyChanged.Samples", "DotNetNinja.NotifyPropertyChanged.Samples\DotNetNinja.NotifyPropertyChanged.Samples.xproj", "{BBD68B4F-E504-480D-8219-7EC66CDC7B68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{EACF21D2-33D2-4327-9574-946E08150F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EACF21D2-33D2-4327-9574-946E08150F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EACF21D2-33D2-4327-9574-946E08150F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBD68B4F-E504-480D-8219-7EC66CDC7B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD68B4F-E504-480D-8219-7EC66CDC7B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD68B4F-E504-480D-8219-7EC66CDC7B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD68B4F-E504-480D-8219-7EC66CDC7B68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
