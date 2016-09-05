@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0-*",
+  "version": "1.0.0",
   "title": "DotNetNinja Notify Property Changed library",
   "description": "Library providing utilities that helps in notifying of object's property changed.",
   "copyright": "Karol Hinz",
