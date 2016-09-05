@@ -1,6 +1,7 @@
 # DotNetNinja
 
 ## Tools and utilities used in my day-to-day work.
+## These tools are emerging from my love towards simplicity, work automation and clean APIs.
 
 ### DotNetNinja.NotifyPropertyChanged:
 Library giving access to abstract class PropertyChangedNotifier which implements INotifyPropertyChanged and provides convenient mechanisms for notifying properties change. The mechanisms are type-safe and allow using IntelliSense.
@@ -20,7 +21,7 @@ public class SampleObject : PropertyChangedNotifier
 
 There are 3 ways you can notify property change:
 
-1. implicitly (my personal favorite):
+- implicitly (my personal favorite)
 ```csharp
 public int Property 
 {
@@ -30,7 +31,7 @@ public int Property
 int _property;
 ```
 
-2. with expression tree selector:
+- with expression tree selector
 ```csharp
 public int Property
 {
@@ -40,7 +41,7 @@ public int Property
 int _property;
 ```
 
-3. with `nameof` keyword:
+- with `nameof` keyword
 ```csharp
 public int Property
 {
