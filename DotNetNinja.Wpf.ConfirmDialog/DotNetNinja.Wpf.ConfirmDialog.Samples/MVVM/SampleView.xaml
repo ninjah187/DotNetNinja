@@ -1,0 +1,12 @@
+﻿<Window x:Class="DotNetNinja.Wpf.ConfirmDialog.Samples.MVVM.SampleView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DotNetNinja.Wpf.ConfirmDialog.Samples.MVVM"
+        mc:Ignorable="d"
+        Title="SampleView" Height="300" Width="300">
+    <Grid>
+        <Button Content="Do some action" Command="{Binding DoSomethingCommand}"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Window>

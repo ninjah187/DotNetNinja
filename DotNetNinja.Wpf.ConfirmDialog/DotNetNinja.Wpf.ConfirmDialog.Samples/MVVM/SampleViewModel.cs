@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using DotNetNinja.Wpf.Commands;
 
-namespace DotNetNinja.Wpf.ConfirmDialog.Samples
+namespace DotNetNinja.Wpf.ConfirmDialog.Samples.MVVM
 {
-    public class SampleViewModel
+    public class SampleViewModel : IViewModel
     {
         public ICommand DoSomethingCommand { get; private set; }
 
@@ -16,9 +16,9 @@ namespace DotNetNinja.Wpf.ConfirmDialog.Samples
 
         public SampleViewModel(IConfirmator confirmator)
         {
-            _confirmator = confirmator;    
+            _confirmator = confirmator;
 
-            DoSomethingCommand = 
+            DoSomethingCommand = new Command(async () => await DoSomethingAsync());
         }
 
         public async Task DoSomethingAsync()
