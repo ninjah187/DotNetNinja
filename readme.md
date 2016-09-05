@@ -13,6 +13,8 @@ __Project aiming ASP.NET Core 1.0.__
 __Dependencies:__
 - [ImageProcessorCore](https://github.com/JimBobSquarePants/ImageProcessor/)
 
+__What it is:__
+
 `DotNetNinja.ImageResizer` contains few features:
 
 `Size` structure:
@@ -35,6 +37,8 @@ __Dependencies:__
 
 `ImageServerMiddleware`:
 - it only serves already resized images (gives 404 HTTP response if no particular size was found).
+
+__Sample usage:__
 
 In order to use default implementations just add following to your Startup.cs:
 
