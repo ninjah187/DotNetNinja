@@ -120,9 +120,9 @@ int _property;
 
 ### DotNetNinja.TypeFiltering:
 
-It's simple, fluent API that provides little bits of C# 7's pattern-matching-like functionality.
+It's simple, fluent API that provides little bits of C# 7's pattern-matching-like functionality. Functional programming features are cool!
 
-__Sample usage:___
+__Sample usage:__
 
 ```csharp
 interface IFoo
@@ -144,18 +144,20 @@ interface IHoo
 void SampleGeneric<T>(T item)
 {
 	item
-		.When<IFoo>(i => i.Foo())		// i.Foo() fires if item implements IFoo
-		.When<IGoo>((i, filtering) => 	// i.Goo() fires if item implements IGoo
+		.When<IFoo>(i => i.Foo())		// lambda calling i.Foo() fires if item implements IFoo
+		.When<IGoo>((i, filtering) => 	// lambda fires if item implements IGoo
 		{
 			if (i.IsValid)
 			{
 				i.Goo();
-				filtering.Break();		// if control flow reaches this point, no further checks will be performed
+				filtering.Break();		// if control flow reaches this point, no further type tests will be performed
 			}
 		})
 		.When<IHoo>(i => i.Hoo())		// this is reached only if filtering.Break() wasn't called
 		.ThrowIfNotRecognized();		// if no type was recognized, InvalidOperationException is thrown
 }
+
+// note: API doesn't automatically break after successful type test unless broken explicitly by user (just like in IGoo case or with BreakIfRecognized() method).
 ```
 
 ---
