@@ -118,6 +118,48 @@ int _property;
 
 ---
 
+### DotNetNinja.TypeFiltering:
+
+It's simple, fluent API that provides little bits of C# 7's pattern-matching-like functionality.
+
+__Sample usage:___
+
+```csharp
+interface IFoo
+{
+	void Foo();
+}
+
+interface IGoo
+{
+	bool IsValid { get; }
+	void Goo();
+}
+
+interface IHoo
+{
+	void Hoo();
+}
+
+void SampleGeneric<T>(T item)
+{
+	item
+		.When<IFoo>(i => i.Foo())		// i.Foo() fires if item implements IFoo
+		.When<IGoo>((i, filtering) => 	// i.Goo() fires if item implements IGoo
+		{
+			if (i.IsValid)
+			{
+				i.Goo();
+				filtering.Break();		// if control flow reaches this point, no further checks will be performed
+			}
+		})
+		.When<IHoo>(i => i.Hoo())		// this is reached only if filtering.Break() wasn't called
+		.ThrowIfNotRecognized();		// if no type was recognized, InvalidOperationException is thrown
+}
+```
+
+---
+
 ### DotNetNinja.UserAccess:
 Custom user management, authentication and authorization library for ASP.NET Core with Entity Framework Core projects.
 
