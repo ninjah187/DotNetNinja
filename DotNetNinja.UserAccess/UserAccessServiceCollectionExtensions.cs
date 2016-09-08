@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 
-namespace DotNetNinja.UserAccess
+namespace DotNetNinja.AspNetCore.UserAccess
 {
     public static class UserAccessServiceCollectionExtensions
     {

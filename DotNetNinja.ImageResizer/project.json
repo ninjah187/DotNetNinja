@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.2.3-*",
+  "version": "0.3.0-*",
   "title": "DotNetNinja Image Resizer library",
   "description": "Library providing ASP.NET Core middleware based on ImageProcessorCore which enables image resizing on fly.",
   "copyright": "Karol Hinz",

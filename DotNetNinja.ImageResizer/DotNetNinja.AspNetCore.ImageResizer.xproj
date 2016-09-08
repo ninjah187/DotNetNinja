@@ -6,11 +6,11 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>71bcd321-4a04-4c3c-95a4-26bb06ce1666</ProjectGuid>
-    <RootNamespace>DotNetNinja.UserAccess</RootNamespace>
+    <ProjectGuid>8330fd63-b873-47a8-8081-53ad27d1ec5c</ProjectGuid>
+    <RootNamespace>DotNetNinja.AspNetCore.ImageResizer</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>

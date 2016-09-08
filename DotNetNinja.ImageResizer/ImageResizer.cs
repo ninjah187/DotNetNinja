@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.IO;
 using ImageProcessorCore;
 
-namespace DotNetNinja.ImageResizer
+namespace DotNetNinja.AspNetCore.ImageResizer
 {
     public class ImageResizer : IImageResizer
     {

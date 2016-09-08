@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 
-namespace DotNetNinja.ImageResizer
+namespace DotNetNinja.AspNetCore.ImageResizer
 {
     public class ImageServerMiddleware
     {

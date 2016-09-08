@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.UserAccess", "DotNetNinja.UserAccess\DotNetNinja.UserAccess.xproj", "{71BCD321-4A04-4C3C-95A4-26BB06CE1666}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.AspNetCore.UserAccess", "DotNetNinja.UserAccess\DotNetNinja.AspNetCore.UserAccess.xproj", "{71BCD321-4A04-4C3C-95A4-26BB06CE1666}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.ImageResizer", "DotNetNinja.ImageResizer\DotNetNinja.ImageResizer.xproj", "{8330FD63-B873-47A8-8081-53AD27D1EC5C}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.AspNetCore.ImageResizer", "DotNetNinja.ImageResizer\DotNetNinja.AspNetCore.ImageResizer.xproj", "{8330FD63-B873-47A8-8081-53AD27D1EC5C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNetNinja.Wpf.ConfirmDialog", "DotNetNinja.Wpf.ConfirmDialog", "{282FF669-DFEB-4862-9201-643CE554EBFC}"
 EndProject

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace DotNetNinja.UserAccess
+namespace DotNetNinja.AspNetCore.UserAccess
 {
     public class UnauthorizedRedirectionMiddleware
     {

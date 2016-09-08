@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace DotNetNinja.ImageResizer
+namespace DotNetNinja.AspNetCore.ImageResizer
 {
     public class ImagePathGenerator : IImagePathGenerator
     {

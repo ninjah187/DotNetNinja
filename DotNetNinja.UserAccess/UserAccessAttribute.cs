@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 
-namespace DotNetNinja.UserAccess
+namespace DotNetNinja.AspNetCore.UserAccess
 {
     /// <summary>
     /// Filter attribute that restricts access to decorated controller/action only for authorized users.

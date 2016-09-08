@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DotNetNinja.ImageResizer
+namespace DotNetNinja.AspNetCore.ImageResizer
 {
     public static class ImageResizerServiceCollectionExtensions
     {

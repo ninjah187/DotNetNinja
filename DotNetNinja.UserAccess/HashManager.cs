@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
-namespace DotNetNinja.UserAccess
+namespace DotNetNinja.AspNetCore.UserAccess
 {
     /// <summary>
     /// Object providing methods for Pbkdf2 hash managing and verifying.
