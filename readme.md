@@ -40,7 +40,7 @@ __What it is:__
 
 __Sample usage:__
 
-In order to use default implementations just add following to your Startup.cs:
+In order to use default implementations just add following to your `Startup.cs`:
 
 ```csharp
 using DotNetNinja.ImageResizer;

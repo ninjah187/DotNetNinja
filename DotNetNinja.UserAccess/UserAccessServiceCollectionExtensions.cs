@@ -16,18 +16,20 @@ namespace DotNetNinja.UserAccess
         /// <returns></returns>
         public static IServiceCollection AddUserAccess<TDbContextImplementation>(this IServiceCollection services)
             where TDbContextImplementation : DbContext
-            => services.AddUserAccess<HashManager, UserService, TDbContextImplementation>();
+            => services.AddUserAccess<HashManager, UserService, TDbContextImplementation, HttpContextAccessor>();
 
         /// <summary>
         /// Adds singleton IHashManager service, scoped IUserService and scoped specific DbContext implementations.
         /// </summary>
         /// <returns></returns>
-        public static IServiceCollection AddUserAccess<THashManager, TUserService, TDbContextImplementation>(this IServiceCollection services)
+        public static IServiceCollection AddUserAccess<THashManager, TUserService, TDbContextImplementation, THttpContextAccessor>(this IServiceCollection services)
             where THashManager : class, IHashManager
             where TUserService : class, IUserService
             where TDbContextImplementation : DbContext
+            where THttpContextAccessor : class, IHttpContextAccessor
         {
             services
+                .AddSingleton<IHttpContextAccessor, THttpContextAccessor>()
                 .AddSingleton<IHashManager, THashManager>()
                 .AddScoped<IUserService, TUserService>();
             
