@@ -10,6 +10,24 @@ namespace DotNetNinja.AspNetCore.ImageResizer
     {
         public string GetResizedPath(string originalPath, Size size)
         {
+            if (originalPath == null)
+            {
+                throw new ArgumentNullException(nameof(originalPath));
+            }
+
+            if (originalPath.Trim() == string.Empty)
+            {
+                throw new ArgumentException("Empty path.", nameof(originalPath));
+            }
+
+            if ((size.Width == null && size.Height == null) ||
+                (size.Width == null && size.Height == 0) ||
+                (size.Width == 0 && size.Height == 0) ||
+                (size.Width == 0 && size.Height == null))
+            {
+                throw new ArgumentException(nameof(size));
+            }
+
             var fileName = Path.GetFileNameWithoutExtension(originalPath);
             var extension = Path.GetExtension(originalPath);
 
@@ -20,6 +38,16 @@ namespace DotNetNinja.AspNetCore.ImageResizer
 
         public string GetOriginalPath(string resizedPath)
         {
+            if (resizedPath == null)
+            {
+                throw new ArgumentNullException(nameof(resizedPath));
+            }
+
+            if (resizedPath.Trim() == string.Empty)
+            {
+                throw new ArgumentException("Empty path.", nameof(resizedPath));
+            }
+
             var fileName = Path.GetFileNameWithoutExtension(resizedPath);
             var extension = Path.GetExtension(resizedPath);
 
