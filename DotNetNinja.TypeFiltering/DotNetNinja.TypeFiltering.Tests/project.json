@@ -1,11 +1,15 @@
-﻿{
+{
   "version": "0.1.0-*",
   "title": "DotNetNinja.TypeFiltering tests",
   "description": "Tests for DotNetNinja.TypeFiltering.",
   "copyright": "Karol Hinz",
   "authors": [ "Karol Hinz" ],
 
-  "dependencies": {},
+  "dependencies": {
+    "DotNetNinja.TypeFiltering": "0.1.0",
+    "xunit": "2.2.0-beta2-build3300",
+    "dotnet-test-xunit": "2.2.0-preview2-build1029"
+  },
 
   "frameworks": {
     "netcoreapp1.0": {
@@ -20,7 +24,5 @@
 
   "scripts": {},
 
-  "buildOptions": {
-    "xmlDoc": true
-  }
+  "testRunner": "xunit"
 }
