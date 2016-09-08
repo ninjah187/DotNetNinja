@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.AspNetCore.UserAccess", "DotNetNinja.UserAccess\DotNetNinja.AspNetCore.UserAccess.xproj", "{71BCD321-4A04-4C3C-95A4-26BB06CE1666}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.AspNetCore.ImageResizer", "DotNetNinja.ImageResizer\DotNetNinja.AspNetCore.ImageResizer.xproj", "{8330FD63-B873-47A8-8081-53AD27D1EC5C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNetNinja.Wpf.ConfirmDialog", "DotNetNinja.Wpf.ConfirmDialog", "{282FF669-DFEB-4862-9201-643CE554EBFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNinja.Wpf.ConfirmDialog", "DotNetNinja.Wpf.ConfirmDialog\DotNetNinja.Wpf.ConfirmDialog\DotNetNinja.Wpf.ConfirmDialog.csproj", "{3435EE17-CC43-4FA1-9B93-25CD96DA2F6F}"
@@ -31,20 +27,20 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.NotifyPropertyC
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.NotifyPropertyChanged.Tests", "DotNetNinja.NotifyPropertyChanged\DotNetNinja.NotifyPropertyChanged.Tests\DotNetNinja.NotifyPropertyChanged.Tests.xproj", "{C0D778A7-4799-4631-9D6B-098B1B1B1853}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNetNinja.AspNetCore.ImageResizer", "DotNetNinja.AspNetCore.ImageResizer", "{7A64E636-4D6D-4C48-ABC1-2B8FF9B38225}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNetNinja.AspNetCore.UserAccess", "DotNetNinja.AspNetCore.UserAccess", "{A35E170E-56EC-4F10-B067-2524A535E142}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.AspNetCore.ImageResizer", "DotNetNinja.AspNetCore.ImageResizer\DotNetNinja.AspNetCore.ImageResizer\DotNetNinja.AspNetCore.ImageResizer.xproj", "{8330FD63-B873-47A8-8081-53AD27D1EC5C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DotNetNinja.AspNetCore.UserAccess", "DotNetNinja.AspNetCore.UserAccess\DotNetNinja.AspNetCore.UserAccess\DotNetNinja.AspNetCore.UserAccess.xproj", "{71BCD321-4A04-4C3C-95A4-26BB06CE1666}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{71BCD321-4A04-4C3C-95A4-26BB06CE1666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71BCD321-4A04-4C3C-95A4-26BB06CE1666}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71BCD321-4A04-4C3C-95A4-26BB06CE1666}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71BCD321-4A04-4C3C-95A4-26BB06CE1666}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8330FD63-B873-47A8-8081-53AD27D1EC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8330FD63-B873-47A8-8081-53AD27D1EC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8330FD63-B873-47A8-8081-53AD27D1EC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8330FD63-B873-47A8-8081-53AD27D1EC5C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3435EE17-CC43-4FA1-9B93-25CD96DA2F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3435EE17-CC43-4FA1-9B93-25CD96DA2F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3435EE17-CC43-4FA1-9B93-25CD96DA2F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -77,6 +73,14 @@ Global
 		{C0D778A7-4799-4631-9D6B-098B1B1B1853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0D778A7-4799-4631-9D6B-098B1B1B1853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0D778A7-4799-4631-9D6B-098B1B1B1853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8330FD63-B873-47A8-8081-53AD27D1EC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8330FD63-B873-47A8-8081-53AD27D1EC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8330FD63-B873-47A8-8081-53AD27D1EC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8330FD63-B873-47A8-8081-53AD27D1EC5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71BCD321-4A04-4C3C-95A4-26BB06CE1666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71BCD321-4A04-4C3C-95A4-26BB06CE1666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71BCD321-4A04-4C3C-95A4-26BB06CE1666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71BCD321-4A04-4C3C-95A4-26BB06CE1666}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,5 +94,7 @@ Global
 		{C7125BBE-4D86-48E5-9064-D0E0413F5F26} = {363338FA-73D7-45BB-9A24-E41A99FB829D}
 		{BBD68B4F-E504-480D-8219-7EC66CDC7B68} = {363338FA-73D7-45BB-9A24-E41A99FB829D}
 		{C0D778A7-4799-4631-9D6B-098B1B1B1853} = {363338FA-73D7-45BB-9A24-E41A99FB829D}
+		{8330FD63-B873-47A8-8081-53AD27D1EC5C} = {7A64E636-4D6D-4C48-ABC1-2B8FF9B38225}
+		{71BCD321-4A04-4C3C-95A4-26BB06CE1666} = {A35E170E-56EC-4F10-B067-2524A535E142}
 	EndGlobalSection
 EndGlobal
