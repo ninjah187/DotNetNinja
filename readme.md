@@ -6,7 +6,7 @@ __These tools are emerging from my love towards simplicity, work automation and 
 
 ---
 
-### DotNetNinja.ImageResizer:
+### DotNetNinja.AspNetCore.ImageResizer:
 
 __Project aiming ASP.NET Core 1.0.__
 
@@ -15,7 +15,7 @@ __Dependencies:__
 
 __What it is:__
 
-`DotNetNinja.ImageResizer` contains few features:
+`DotNetNinja.AspNetCore.ImageResizer` contains few features:
 
 `Size` structure:
 - which contains properties `int? Width` and `int? Height` (thanks to it you can give only one, desired dimension and auto-scale the other).
@@ -43,7 +43,7 @@ __Sample usage:__
 In order to use default implementations just add following to your `Startup.cs`:
 
 ```csharp
-using DotNetNinja.ImageResizer;
+using DotNetNinja.AspNetCore.ImageResizer;
 
 public class Startup
 {
@@ -60,6 +60,162 @@ public class Startup
 		// or:
 
 		app.UseImageServer(); // for ImageServerMiddleware
+	}
+}
+```
+
+---
+
+### DotNetNinja.AspNetCore.UserAccess:
+
+__Project aiming ASP.NET Core 1.0.__
+
+__Dependencies:__
+* ASP.NET Core 1.0 MVC
+* Entity Framework Core
+
+__What it is:__
+
+Custom user management, authentication and authorization (the latter coming in the future) library for ASP.NET Core with Entity Framework Core projects.
+
+`DotNetNinja.AspNetCore.UserAccess` gives you:
+
+`User` class:
+- model representing user of application.
+
+`IHashManager` with `HashManager` implementation:
+- service used to generate and verify password hashes (PBKDF2 by default).
+
+`IUserService` with `UserService` implementation:
+- service providing basic users operations like create, delete, log in, log out.
+
+`UserAccessFilter`:
+- MVC authentication filter that lets you control access to your controllers and actions in convenient way.
+
+`UnauthorizedRedirectionMiddleware`:
+- middleware that lets you redirect all HTTP 401 unauthorized responses (which are returned by default if authentication fails).
+
+__Sample usage:__
+
+Add `DbSet<User>` to your app's `DbContext`.
+
+```csharp
+using DotNetNinja.AspNetCore.UserAccess;
+
+public class AppDbContext : DbContext
+{
+	public DbSet<User> Users { get; set; }
+
+	// ...
+}
+```
+
+Configure your `Startup.cs`:
+
+```csharp
+using DotNetNinja.AspNetCore.UserAccess;
+
+public class Startup
+{
+	public void ConfigureServices(IServiceCollection services)
+	{
+		// ...
+
+		// you also have to register your DbContext and Mvc services
+
+		services.AddUserAccess<AppDbContext>();
+
+		// ...
+	}
+
+	public void Configure(IApplicationBuilder app)
+	{
+		// ...
+
+		// optional:
+		app.UseUnauthorizedRedirection("/users/login"); // unauthorized requests will be redirected to /users/login route
+
+		// ...
+	}
+}
+```
+
+Now you can restrict access to your controllers and actions by adding `[UserAccess]` attribute to those:
+
+```csharp
+using DotNetNinja.AspNetCore.UserAccess;
+
+public class HomeController : Controller
+{
+	// this action can be accessed by anyone:
+	public IActionResult Index()
+	{
+		return View();
+	}
+
+	// this action can be accessed only if request contains cookie with valid access token:
+	[UserAccess]
+	public IActionResult RestrictedAction()
+	{
+		return View();
+	}
+}
+
+// every action in this controller can be accessed only if request contains cookie with valid access token:
+[UserAccess]
+public class RestrictedController : Controller
+{
+	public IActionResult Index()
+	{
+		return View();
+	}
+
+	public IActionResult DoSomething()
+	{
+		// ...
+
+		return View();
+	}
+}
+```
+
+In order to access basic user management functionality you can use `IUserService`.  
+Sample of log in/log out controller with the injected service:
+
+```csharp
+using DotNetNinja.AspNetCore.UserAccess;
+
+public class UsersController : Controller
+{
+	IUserService _userService;
+
+	public UsersController(IUserService userService)
+	{
+		_userService = userService;
+	}
+
+	public IActionResult LogIn()
+		=> View();
+
+	[HttpPost]
+	public async Task<IActionResult> LogIn(string login, string password)
+	{
+		var token = await _userService.LogInAsync(login, password);
+
+		if (token == null)
+		{
+			return Unauthorized();
+		}
+
+		return RedirectToAction("Index", "Home");
+	}
+
+	[UserAccess]
+	public async Task<IActionResult> LogOut()
+	{
+		await _userService.LogOutAsync();
+
+		return RedirectToAction("Index", "Home");
 	}
 }
 ```
@@ -158,162 +314,6 @@ void SampleGeneric<T>(T item)
 }
 
 // note: API doesn't automatically break after successful type test unless broken explicitly by user (just like in IGoo case or with BreakIfRecognized() method).
-```
-
----
-
-### DotNetNinja.UserAccess:
-
-__Project aiming ASP.NET Core 1.0.__
-
-__Dependencies:__
-* ASP.NET Core 1.0 MVC
-* Entity Framework Core
-
-__What it is:__
-
-Custom user management, authentication and authorization (the latter coming in the future) library for ASP.NET Core with Entity Framework Core projects.
-
-`DotNetNinja.UserAccess` gives you:
-
-`User` class:
-- model representing user of application.
-
-`IHashManager` with `HashManager` implementation:
-- service used to generate and verify password hashes (PBKDF2 by default).
-
-`IUserService` with `UserService` implementation:
-- service providing basic users operations like create, delete, log in, log out.
-
-`UserAccessFilter`:
-- MVC authentication filter that lets you control access to your controllers and actions in convenient way.
-
-`UnauthorizedRedirectionMiddleware`:
-- middleware that lets you redirect all HTTP 401 unauthorized responses (which are returned by default if authentication fails).
-
-__Sample usage:__
-
-Add `DbSet<User>` to your app's `DbContext`.
-
-```csharp
-using DotNetNinja.UserAccess;
-
-public class AppDbContext : DbContext
-{
-	public DbSet<User> Users { get; set; }
-
-	// ...
-}
-```
-
-Configure your `Startup.cs`:
-
-```csharp
-using DotNetNinja.UserAccess;
-
-public class Startup
-{
-	public void ConfigureServices(IServiceCollection services)
-	{
-		// ...
-
-		// you also have to register your DbContext and Mvc services
-
-		services.AddUserAccess<AppDbContext>();
-
-		// ...
-	}
-
-	public void Configure(IApplicationBuilder app)
-	{
-		// ...
-
-		// optional:
-		app.UseUnauthorizedRedirection("/users/login"); // unauthorized requests will be redirected to /users/login route
-
-		// ...
-	}
-}
-```
-
-Now you can restrict access to your controllers and actions by adding `[UserAccess]` attribute to those:
-
-```csharp
-using DotNetNinja.UserAccess;
-
-public class HomeController : Controller
-{
-	// this action can be accessed by anyone:
-	public IActionResult Index()
-	{
-		return View();
-	}
-
-	// this action can be accessed only if request contains cookie with valid access token:
-	[UserAccess]
-	public IActionResult RestrictedAction()
-	{
-		return View();
-	}
-}
-
-// every action in this controller can be accessed only if request contains cookie with valid access token:
-[UserAccess]
-public class RestrictedController : Controller
-{
-	public IActionResult Index()
-	{
-		return View();
-	}
-
-	public IActionResult DoSomething()
-	{
-		// ...
-
-		return View();
-	}
-}
-```
-
-In order to access basic user management functionality you can use `IUserService`.  
-Sample of log in/log out controller with the injected service:
-
-```csharp
-using DotNetNinja.UserAccess;
-
-public class UsersController : Controller
-{
-	IUserService _userService;
-
-	public UsersController(IUserService userService)
-	{
-		_userService = userService;
-	}
-
-	public IActionResult LogIn()
-		=> View();
-
-	[HttpPost]
-	public async Task<IActionResult> LogIn(string login, string password)
-	{
-		var token = await _userService.LogInAsync(login, password);
-
-		if (token == null)
-		{
-			return Unauthorized();
-		}
-
-		return RedirectToAction("Index", "Home");
-	}
-
-	[UserAccess]
-	public async Task<IActionResult> LogOut()
-	{
-		await _userService.LogOutAsync();
-
-		return RedirectToAction("Index", "Home");
-	}
-}
 ```
 
 ---
