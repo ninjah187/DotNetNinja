@@ -180,10 +180,10 @@ Custom user management, authentication and authorization (the latter coming in t
 - model representing user of application.
 
 `IHashManager` with `HashManager` implementation:
-- service used by the library for PBKDF2 hashes generation and verification.
+- service used to generate and verify password hashes (PBKDF2 by default).
 
 `IUserService` with `UserService` implementation:
-- service providing basic operations on users like creating, deleting, authenticating, logging in, logging out.
+- service providing basic users operations like create, delete, log in, log out.
 
 `UserAccessFilter`:
 - MVC authentication filter that lets you control access to your controllers and actions in convenient way.
@@ -275,7 +275,8 @@ public class RestrictedController : Controller
 }
 ```
 
-In order to access basic user management functionality you can use `IUserService`. Sample user log in/log out controller with the injected service:
+In order to access basic user management functionality you can use `IUserService`.  
+Sample of log in/log out controller with the injected service:
 
 ```csharp
 using DotNetNinja.UserAccess;
