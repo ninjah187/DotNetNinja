@@ -14,11 +14,6 @@ namespace DotNetNinja.AspNetCore.ImageResizer
         /// </summary>
         Dictionary<string, List<Size>> _allowed;
 
-        //public ImageResizer(Dictionary<string, List<Size>> allowed)
-        //    : this(allowed, null)
-        //{
-        //}
-
         public ImageResizer(Dictionary<string, List<Size>> allowed)
         {
             _allowed = allowed;
