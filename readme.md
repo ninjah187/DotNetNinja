@@ -83,6 +83,9 @@ Custom user management, authentication and authorization (the latter coming in t
 `User` class:
 - model representing user of application.
 
+`ISaltGenerator` with `RandomSaltGenerator` implementation:
+- service used to obtain salt for password hashing.
+
 `IHashManager` with `HashManager` implementation:
 - service used to generate and verify password hashes (PBKDF2 by default).
 
