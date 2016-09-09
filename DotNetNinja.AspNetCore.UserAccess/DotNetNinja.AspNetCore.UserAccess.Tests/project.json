@@ -1,0 +1,28 @@
+﻿{
+  "version": "0.1.0-*",
+  "title": "DotNetNinja.AspNetCore.UserAccess tests",
+  "description": "Tests for DotNetNinja.AspNetCore.UserAccess.",
+  "copyright": "Karol Hinz",
+  "authors": [ "Karol Hinz" ],
+
+  "dependencies": {
+    "DotNetNinja.AspNetCore.UserAccess": "0.16.0",
+    "xunit": "2.2.0-beta2-build3300",
+    "dotnet-test-xunit": "2.2.0-preview2-build1029"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0"
+        }
+      }
+    }
+  },
+
+  "scripts": {},
+
+  "testRunner": "xunit"
+}

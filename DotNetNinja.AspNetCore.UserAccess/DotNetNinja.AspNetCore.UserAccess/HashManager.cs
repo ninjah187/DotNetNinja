@@ -12,13 +12,16 @@ namespace DotNetNinja.AspNetCore.UserAccess
     /// </summary>
     public class HashManager : IHashManager
     {
+        ISaltGenerator _saltGenerator;
+
+        public HashManager(ISaltGenerator saltGenerator)
+        {
+            _saltGenerator = saltGenerator;
+        }
+
         public PasswordSalt Hash(string input)
         {
-            var salt = new byte[128 / 8];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
+            var salt = _saltGenerator.GetSalt(128 / 8); // generate 128-bit salt
 
             return Hash(input, salt);
         }
