@@ -22,7 +22,7 @@ namespace DotNetNinja.AspNetCore.UserAccess
         public PasswordSalt Hash(string input)
         {
             var salt = _saltGenerator.GetSalt(128 / 8); // generate 128-bit salt
-
+            
             return Hash(input, salt);
         }
 
@@ -33,6 +33,11 @@ namespace DotNetNinja.AspNetCore.UserAccess
 
         public PasswordSalt Hash(string input, byte[] salt)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
+
             var hash = KeyDerivation.Pbkdf2(
                 password: input,
                 salt: salt,
