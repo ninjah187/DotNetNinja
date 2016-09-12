@@ -25,6 +25,10 @@ namespace DotNetNinja.AspNetCore.UserAccess
 
         public async Task<User> CreateUserAsync(string login, string password)
         {
+            if (login == null)            throw new ArgumentNullException(nameof(login));
+            if (login.Trim().Length == 0) throw new ArgumentException("Argument is empty or whitespace.", nameof(login));
+            if (password == null)         throw new ArgumentNullException(nameof(password));
+
             if (await _dbContext.Set<User>()
                     .AnyAsync(u => u.Login.Equals(login, StringComparison.CurrentCultureIgnoreCase)))
             {
