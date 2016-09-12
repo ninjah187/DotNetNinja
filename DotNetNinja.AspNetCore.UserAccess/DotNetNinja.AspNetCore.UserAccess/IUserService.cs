@@ -25,6 +25,12 @@ namespace DotNetNinja.AspNetCore.UserAccess
         Task<bool> VerifyAsync(string token);
 
         /// <summary>
+        /// Verifies if current request contains valid access token of logged user.
+        /// </summary>
+        /// <returns></returns>
+        Task<bool> VerifyAsync();
+
+        /// <summary>
         /// Attempts to log in user with given credentials. If succeed, returns access token, otherwise returns null.
         /// </summary>
         /// <param name="login">User login.</param>

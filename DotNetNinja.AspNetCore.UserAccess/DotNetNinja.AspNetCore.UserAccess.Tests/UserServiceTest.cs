@@ -39,7 +39,7 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
             await userService.CreateUserAsync(login, pass);
 
             var created = await dbContext.Users.SingleAsync(u => u.Id == 1);
-
+            
             Assert.Equal(created.Id, 1);
             Assert.Equal(created.Login, "newUser");
             Assert.Equal(created.Password, "hashedPass");

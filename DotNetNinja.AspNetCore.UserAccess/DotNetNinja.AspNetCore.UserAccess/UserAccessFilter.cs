@@ -22,18 +22,9 @@ namespace DotNetNinja.AspNetCore.UserAccess
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
-            if (!context.HttpContext.Request.Cookies.ContainsKey("accessToken"))
+            if (!await _userService.VerifyAsync())
             {
                 context.Result = new UnauthorizedResult();
-                return;
-            }
-
-            var token = context.HttpContext.Request.Cookies["accessToken"];
-
-            if (!await _userService.VerifyAsync(token))
-            {
-                context.Result = new UnauthorizedResult();
-                return;
             }
         }
     }
