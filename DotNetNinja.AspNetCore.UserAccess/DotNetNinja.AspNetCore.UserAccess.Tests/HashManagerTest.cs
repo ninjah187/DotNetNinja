@@ -43,6 +43,17 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
             Assert.Equal(expected, result.Password);
         }
 
+        [Fact]
+        public void ArgumentNullExceptionWhenHashInputIsNull()
+        {
+            Action testCode = () =>
+            {
+                var output = _hashManager.Hash(null);
+            };
+
+            Assert.Throws<ArgumentNullException>(testCode);
+        }
+
         public static IEnumerable<object[]> HashingWithSaltData()
         {
             // Func<> instead of byte[] to ensure immutability
@@ -66,6 +77,24 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
             Assert.Equal(expected, result.Password);
         }
 
+        public static IEnumerable<object[]> ArgumentNullExceptionData()
+        {
+            yield return new object[] { null, null };
+            yield return new object[] { "input", null };
+            yield return new object[] { null, new byte[0] };
+        }
+
+        [Theory, MemberData(nameof(ArgumentNullExceptionData))]
+        public void HashingWithSaltBytesArgumentNullException(string input, byte[] salt)
+        {
+            Action testCode = () =>
+            {
+                var output = _hashManager.Hash(input, salt);
+            };
+
+            Assert.Throws<ArgumentNullException>(testCode);
+        }
+
         [Theory, MemberData(nameof(HashingWithSaltData))]
         public void HashingWithSaltString(string input, byte[] saltBytes, string expected)
         {
@@ -76,12 +105,14 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
             Assert.Equal(expected, result.Password);
         }
 
-        [Fact]
-        public void ArgumentNullExceptionWhenHashInputIsNull()
+        [Theory, MemberData(nameof(ArgumentNullExceptionData))]
+        public void HashingWithSaltStringArgumentNullException(string input, byte[] saltBytes)
         {
+            var salt = saltBytes == null ? null : Convert.ToBase64String(saltBytes);
+
             Action testCode = () =>
             {
-                var output = _hashManager.Hash(null);
+                var output = _hashManager.Hash(input, salt);
             };
 
             Assert.Throws<ArgumentNullException>(testCode);

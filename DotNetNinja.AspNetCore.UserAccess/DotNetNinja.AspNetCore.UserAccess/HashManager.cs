@@ -33,10 +33,8 @@ namespace DotNetNinja.AspNetCore.UserAccess
 
         public PasswordSalt Hash(string input, byte[] salt)
         {
-            if (input == null)
-            {
-                throw new ArgumentNullException(nameof(input));
-            }
+            if (input == null) throw new ArgumentNullException(nameof(input));
+            if (salt == null) throw new ArgumentNullException(nameof(salt));
 
             var hash = KeyDerivation.Pbkdf2(
                 password: input,
