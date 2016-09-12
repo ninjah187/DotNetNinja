@@ -47,48 +47,5 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
             Assert.True(string.IsNullOrEmpty(created.AccessToken));
             Assert.Equal(created.AccessTokenExpiration, default(DateTime));
         }
-
-        //[Fact]
-        //public async Task UserService_CreateUserWithValidData_Succeed()
-        //{
-        //    var dbContextMock = new Mock<DbContext>();
-
-        //    var users = new List<User>();
-        //    var usersQueryable = new List<User>().AsQueryable();
-
-        //    var usersMock = new Mock<DbSet<User>>();
-        //    usersMock.As<IQueryable<User>>().Setup(m => m.Provider).Returns(usersQueryable.Provider);
-        //    usersMock.As<IQueryable<User>>().Setup(m => m.Expression).Returns(usersQueryable.Expression);
-        //    usersMock.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(usersQueryable.ElementType);
-        //    usersMock.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(usersQueryable.GetEnumerator());
-        //    usersMock.Setup(m => m.Add(It.IsAny<User>())).Callback((User u) =>
-        //    {
-        //        users.Add(u);
-        //    });
-
-        //    dbContextMock.Setup(c => c.SaveChangesAsync(It.IsAny<System.Threading.CancellationToken>())).Returns(new TaskCompletionSource<int>().Task);
-
-        //    dbContextMock.Setup(c => c.Set<User>()).Returns(usersMock.Object);
-
-        //    var hashManagerMock = new Mock<IHashManager>();
-        //    hashManagerMock.Setup(m => m.Hash(It.IsAny<string>())).Returns(new PasswordSalt { Password = "hashedPass", Salt = "salt" });
-
-        //    var userService = new UserService(
-        //            dbContextMock.Object,
-        //            hashManagerMock.Object,
-        //            new Mock<IHttpContextAccessor>().Object
-        //        );
-
-        //    //var created = userService.CreateUserAsync("newUser", "pass");
-        //    await userService.CreateUserAsync("newUser", "pass");
-
-        //    var created = usersQueryable.Single(u => u.Login == "newUser");
-
-        //    Assert.Equal(created.Login, "newUser");
-        //    Assert.Equal(created.Password, "hashedPass");
-        //    Assert.Equal(created.Salt, "salt");
-        //    Assert.True(string.IsNullOrEmpty(created.AccessToken));
-        //    Assert.Equal(created.AccessTokenExpiration, default(DateTime));
-        //}
     }
 }
