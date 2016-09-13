@@ -19,24 +19,17 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
         [Fact]
         public async Task UserService_CreateUserWithValidData_Succeed()
         {
-            var dbContext = new TestDbContext(new DbContextOptionsBuilder()
-                                                .UseInMemoryDatabase()
-                                                .Options);
+            var testContext = new UserServiceTestContext();
+            testContext.HashManagerMock.Setup(m => m.Hash(It.IsAny<string>())).Returns(new PasswordSalt { Password = "hashedPass", Salt = "salt" });
 
-            var hashManagerMock = new Mock<IHashManager>();
-            hashManagerMock.Setup(m => m.Hash(It.IsAny<string>())).Returns(new PasswordSalt { Password = "hashedPass", Salt = "salt" });
-
-            var httpContextAccessorMock = new Mock<IHttpContextAccessor>();
-
-            var userService = new UserService(dbContext, hashManagerMock.Object, httpContextAccessorMock.Object);
+            var userService = testContext.CreateUserService();
 
             var login = "newUser";
             var pass = "pass";
-
-            //var created = await userService.CreateUserAsync(login, pass);
+            
             await userService.CreateUserAsync(login, pass);
 
-            var created = await dbContext.Users.SingleAsync(u => u.Id == 1);
+            var created = await testContext.DbContext.Users.SingleAsync(u => u.Id == 1);
             
             Assert.Equal(created.Id, 1);
             Assert.Equal(created.Login, "newUser");
@@ -56,20 +49,14 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
         [Theory, MemberData(nameof(UserService_CreateUserWithAlreadyExistingLogin_ThrowsUserAccessException_Data))]
         public async Task UserService_CreateUserWithAlreadyExistingLogin_ThrowsUserAccessException(string login)
         {
-            var dbContext = new TestDbContext(new DbContextOptionsBuilder()
-                                                .UseInMemoryDatabase()
-                                                .Options);
-
-            dbContext.Users.Add(new User
+            var testContext = new UserServiceTestContext();
+            testContext.DbContext.Users.Add(new User
             {
                 Login = "busiedLogin"
             });
-            await dbContext.SaveChangesAsync();
+            await testContext.DbContext.SaveChangesAsync();
 
-            var hashManagerMock = new Mock<IHashManager>();
-            var httpContextAccessorMock = new Mock<IHttpContextAccessor>();
-
-            var userService = new UserService(dbContext, hashManagerMock.Object, httpContextAccessorMock.Object);
+            var userService = testContext.CreateUserService();
 
             Func<Task> testCode = async () =>
             {
@@ -82,14 +69,8 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
         [Fact]
         public async Task UserService_CreateUserWithNullLogin_ThrowsArgumentNullException()
         {
-            var dbContext = new TestDbContext(new DbContextOptionsBuilder()
-                                                .UseInMemoryDatabase()
-                                                .Options);
-
-            var hashManagerMock = new Mock<IHashManager>();
-            var httpContextAccessorMock = new Mock<IHttpContextAccessor>();
-
-            var userService = new UserService(dbContext, hashManagerMock.Object, httpContextAccessorMock.Object);
+            var testContext = new UserServiceTestContext();
+            var userService = testContext.CreateUserService();
 
             Func<Task> testCode = async () =>
             {
@@ -110,14 +91,8 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
         [Theory, MemberData(nameof(UserService_CreateUserWithEmptyLogin_ThrowsArgumentException_Data))]
         public async Task UserService_CreateUserWithEmptyLogin_ThrowsArgumentException(string login)
         {
-            var dbContext = new TestDbContext(new DbContextOptionsBuilder()
-                                                .UseInMemoryDatabase()
-                                                .Options);
-
-            var hashManagerMock = new Mock<IHashManager>();
-            var httpContextAccessorMock = new Mock<IHttpContextAccessor>();
-
-            var userService = new UserService(dbContext, hashManagerMock.Object, httpContextAccessorMock.Object);
+            var testContext = new UserServiceTestContext();
+            var userService = testContext.CreateUserService();
 
             Func<Task> testCode = async () =>
             {
@@ -130,14 +105,8 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
         [Fact]
         public async Task UserService_CreateUserWithNullPassword_ThrowsArgumentNullException()
         {
-            var dbContext = new TestDbContext(new DbContextOptionsBuilder()
-                                                .UseInMemoryDatabase()
-                                                .Options);
-
-            var hashManagerMock = new Mock<IHashManager>();
-            var httpContextAccessorMock = new Mock<IHttpContextAccessor>();
-
-            var userService = new UserService(dbContext, hashManagerMock.Object, httpContextAccessorMock.Object);
+            var testContext = new UserServiceTestContext();
+            var userService = testContext.CreateUserService();
 
             Func<Task> testCode = async () =>
             {
