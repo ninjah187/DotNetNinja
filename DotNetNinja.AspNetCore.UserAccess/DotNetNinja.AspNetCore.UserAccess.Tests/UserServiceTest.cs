@@ -34,13 +34,13 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
 
             var created = await testContext.DbContext.Users.SingleAsync(u => u.Id == 1);
 
+            testContext.HashManagerMock.Verify();
             Assert.Equal(created.Id, 1);
             Assert.Equal(created.Login, "newUser");
             Assert.Equal(created.Password, "hashedPass");
             Assert.Equal(created.Salt, "salt");
             Assert.True(string.IsNullOrEmpty(created.AccessToken));
             Assert.Equal(created.AccessTokenExpiration, default(DateTime));
-            testContext.HashManagerMock.Verify();
         }
 
         public static IEnumerable<object[]> UserService_CreateUserWithAlreadyExistingLogin_ThrowsUserAccessException_Data()
