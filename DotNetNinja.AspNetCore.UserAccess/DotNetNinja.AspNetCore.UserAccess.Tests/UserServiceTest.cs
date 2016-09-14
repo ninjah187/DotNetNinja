@@ -20,7 +20,10 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
         public async Task UserService_CreateUserWithValidData_Succeed()
         {
             var testContext = new UserServiceTestContext();
-            testContext.HashManagerMock.Setup(m => m.Hash(It.IsAny<string>())).Returns(new PasswordSalt { Password = "hashedPass", Salt = "salt" });
+            testContext.HashManagerMock
+                .Setup(m => m.Hash(It.IsAny<string>()))
+                .Returns(new PasswordSalt { Password = "hashedPass", Salt = "salt" })
+                .Verifiable();
 
             var userService = testContext.CreateUserService();
 
@@ -30,13 +33,14 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
             await userService.CreateUserAsync(login, pass);
 
             var created = await testContext.DbContext.Users.SingleAsync(u => u.Id == 1);
-            
+
             Assert.Equal(created.Id, 1);
             Assert.Equal(created.Login, "newUser");
             Assert.Equal(created.Password, "hashedPass");
             Assert.Equal(created.Salt, "salt");
             Assert.True(string.IsNullOrEmpty(created.AccessToken));
             Assert.Equal(created.AccessTokenExpiration, default(DateTime));
+            testContext.HashManagerMock.Verify();
         }
 
         public static IEnumerable<object[]> UserService_CreateUserWithAlreadyExistingLogin_ThrowsUserAccessException_Data()
@@ -98,7 +102,7 @@ namespace DotNetNinja.AspNetCore.UserAccess.Tests
             {
                 await userService.CreateUserAsync(login, "pass");
             };
-
+            
             await Assert.ThrowsAsync<ArgumentException>(testCode);
         }
 
