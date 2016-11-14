@@ -26,8 +26,6 @@ namespace DotNetNinja.Wpf.Mvvm
 
         public WindowBase()
         {
-            DataContext = Window;
-
             Loaded += delegate
             {
                 _mainContentControl = (ContentControl) FindName("MainContentControl");

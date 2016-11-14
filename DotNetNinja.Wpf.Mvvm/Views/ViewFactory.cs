@@ -39,6 +39,10 @@ namespace DotNetNinja.Wpf.Mvvm
             viewController
                 .InjectPrivateField("_view", view);
 
+            view
+                .InjectProperty("ViewModel", viewModel)
+                .InjectProperty("DataContext", viewModel);
+
             return (IView)view;
         }
     }

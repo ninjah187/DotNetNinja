@@ -70,12 +70,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\IViewFactory.cs" />
     <Compile Include="Views\PartialViewFactory.cs" />
+    <Compile Include="Views\View.cs" />
     <Compile Include="Views\ViewFactory.cs" />
     <Compile Include="Windows\IWindow.cs" />
     <Compile Include="Windows\IWindowFactory.cs" />
+    <Compile Include="Windows\MessageBoxConfirmator.cs" />
     <Compile Include="Windows\WindowBase.cs" />
     <Compile Include="Windows\WindowFactory.cs" />
-    <Compile Include="Windows\WindowMessageDisplayer.cs" />
+    <Compile Include="Windows\MessageBoxDisplayer.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

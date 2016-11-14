@@ -28,7 +28,8 @@ namespace DotNetNinja.Wpf.Mvvm
                 .InjectPrivateField("_window", window);
 
             window
-                .InjectPrivateField("_windowController", winController);
+                .InjectPrivateField("_windowController", winController)
+                .InjectProperty("DataContext", winController);
 
             return (IWindow)window;
         }
