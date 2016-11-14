@@ -15,7 +15,7 @@ namespace DotNetNinja.Wpf.Mvvm
 
         public IView Create(Type viewType, Type viewModelType, IViewController viewController, params object[] viewModelArgs)
         {
-            if (!viewType.IsAssignableFrom(typeof(IView)) || !viewModelType.IsAssignableFrom(typeof(IViewModel)))
+            if (!viewType.Implements<IView>() || !viewModelType.Implements<IViewModel>())
             {
                 throw new InvalidOperationException($"{nameof(viewType)} is not {typeof(IView)} or {nameof(viewModelType)} is not {typeof(IViewModel)}");
             }

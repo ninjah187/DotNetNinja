@@ -17,7 +17,7 @@ namespace DotNetNinja.Wpf.Mvvm
         
         public IWindow Create(Type windowType, IWindowController winController)
         {
-            if (!windowType.IsAssignableFrom(typeof(IWindow)))
+            if (!windowType.Implements<IWindow>())
             {
                 throw new InvalidOperationException("windowType is not IWindow");
             }
